@@ -23,6 +23,9 @@ All tasks require a root user.  Do the following to grab the repositories
     # git clone https://github.com/synergy-promotions/opnsense_tools tools
     # cd tools
     # make update
+    
+ e.g. to build images for RPI3...
+    # make xtools base kernel packages arm-7 DEVICE=RPI3    
 
 DVD ISO
 =====
