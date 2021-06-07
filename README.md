@@ -18,7 +18,7 @@ Install on a FreeBSD 12.2 (amd64) virtual machine with at least 30GB of hard dis
 All tasks require a root user.  Do the following to grab the repositories
 (overwriting standard ports and src):
 
-    # pkg install git nano curl subversion
+    # pkg update && pkg install -y git nano curl subversion
     # cd /usr/share
     # git clone https://github.com/synergy-promotions/opnsense_tools tools
     # cd tools
