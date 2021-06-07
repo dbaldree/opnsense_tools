@@ -28,7 +28,7 @@ Now all the core components should be configured. You can build the device and t
     
 <b> e.g. to build images for RPI3...
     
-    # make xtools base kernel packages arm-7 DEVICE=RPI3    
+    # make xtools base kernel packages arm-3G DEVICE=RPI3    
 </b>
 
 DVD ISO
@@ -155,7 +155,7 @@ Cross-building for other architecures
 -------------------------------------
 All in one go:
 
-    # make xtools base kernel packages arm-7 DEVICE=RPI3
+    # make xtools base kernel packages arm-3G DEVICE=RPI3
  
 This feature is currently experimental and requires installation
 of packages for cross building / user mode emulation and additional
