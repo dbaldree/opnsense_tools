@@ -24,6 +24,8 @@ All tasks require a root user.  Do the following to grab the repositories
     # cd tools
     # make update
     
+Now all the core components should be configured. You can build the device and target architecture images like so:
+    
 <b> e.g. to build images for RPI3...
     
     # make xtools base kernel packages arm-7 DEVICE=RPI3    
