@@ -11,6 +11,8 @@ http://ftp.freebsd.org/pub/FreeBSD/releases/
 Setting up a build system
 =========================
 
+*(This fork's instructions are for building to target the Raspberry Pi 3+ board)*
+
 Install [FreeBSD](https://www.freebsd.org/) 12.2-RELEASE for amd64
 on a machine with at least 25GB of hard disk and at least 4GB of RAM to successfully build all standard images.
 All tasks require a root user.  Do the following to grab the repositories
