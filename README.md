@@ -14,11 +14,11 @@ Setting up a build system
 
 
 
-Install on a FreeBSD 12.1 (amd64) virtual machine with at least 30GB of hard disk and at least 4GB of RAM to successfully build all standard images.
+Install on a FreeBSD 12.2 (amd64) virtual machine with at least 30GB of hard disk and at least 4GB of RAM to successfully build all standard images.
 All tasks require a root user.  Do the following to grab the repositories
 (overwriting standard ports and src):
 
-    # pkg update && pkg install -y git nano curl subversion
+    # pkg update && pkg install -y git nano curl subversion aarch64-binutils qemu-user-static u-boot-rpi3 rpi-firmware
     # cd /usr/share
     # git clone https://github.com/synergy-promotions/opnsense_tools tools
     # cd tools
@@ -146,7 +146,10 @@ images directory and core package version alignment:
 
 Cross-building for other architecures
 -------------------------------------
+All in one go:
 
+    # make xtools base kernel packages arm-7 DEVICE=RPI3
+ 
 This feature is currently experimental and requires installation
 of packages for cross building / user mode emulation and additional
 boot files to be installed as prompted by the build system.
