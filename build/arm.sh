@@ -110,6 +110,7 @@ arm_install_efi()
 echo -n ">>> Building arm image... "
 
 arm_install_uboot
+arm_install_efi
 
 arm_unmount
 mdconfig -d -u ${DEV}
