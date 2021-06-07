@@ -5,6 +5,7 @@ In conjunction with src.git, ports.git, core.git and plugins.git they
 create sets, packages and images for the OPNsense project.
 
 http://ftp.freebsd.org/pub/FreeBSD/ports/ports/README.TXT
+
 http://ftp.freebsd.org/pub/FreeBSD/releases/
 
 Setting up a build system
