@@ -16,7 +16,7 @@ on a machine with at least 25GB of hard disk and at least 4GB of RAM to successf
 All tasks require a root user.  Do the following to grab the repositories
 (overwriting standard ports and src):
 
-    # pkg install git
+    # pkg install nano sudo git subversion
     # cd /usr
     # git clone https://github.com/synergy-promotions/opnsense_tools tools
     # cd tools
