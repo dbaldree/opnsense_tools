@@ -13,11 +13,11 @@ Setting up a build system
 
 *(This fork's instructions are for building to target the Raspberry Pi 3+ board)*
 
-Install on a virual machine with at least 25GB of hard disk and at least 4GB of RAM to successfully build all standard images.
+Install on a FreeBSD 12.2 (amd64) virtual machine with at least 30GB of hard disk and at least 4GB of RAM to successfully build all standard images.
 All tasks require a root user.  Do the following to grab the repositories
 (overwriting standard ports and src):
 
-    # apt-get update && apt-get install -y build-essential make automake git nano curl subversion
+    # pkg install git nano curl subversion
     # cd /usr/share
     # git clone https://github.com/synergy-promotions/opnsense_tools tools
     # cd tools
