@@ -1,6 +1,6 @@
 include		GENERIC
 
-ident		SMP-RPI3
+ident		SMP-RPI3-RPI3
 
 # Remove to build a debug kernel:
 nomakeoptions	DEBUG
