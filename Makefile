@@ -53,7 +53,7 @@ lint: lint-steps lint-composite
 
 # Special vars to load early build.conf settings:
 
-TOOLSDIR?=	/usr/tools
+TOOLSDIR?=	/usr/share/tools
 TOOLSBRANCH?=	master
 
 .if defined(CONFIGDIR)
