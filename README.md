@@ -1,7 +1,8 @@
 About the OPNsense tools
 ========================
 *(This fork's instructions are for building to target the Raspberry Pi 3B and 3B + boards)*
-*NOTE THIS IS NOT A WORKING REPO YET PLEASE DO NOT USE*
+
+**NOTE THIS IS NOT A WORKING REPO YET PLEASE DO NOT USE**
 
 In conjunction with src.git, ports.git, core.git and plugins.git they
 create sets, packages and images for the OPNsense project.
