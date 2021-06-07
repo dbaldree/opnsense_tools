@@ -6,6 +6,8 @@ create sets, packages and images for the OPNsense project.
 
 http://ftp.freebsd.org/pub/FreeBSD/ports/ports/README.TXT
 
+http://ftp.freebsd.org/pub/FreeBSD/releases/arm64/12.2-RELEASE/
+
 http://ftp.freebsd.org/pub/FreeBSD/releases/
 
 Setting up a build system
