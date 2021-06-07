@@ -24,7 +24,7 @@ All tasks require a root user.  Do the following to grab the repositories
     # cd tools
     # make update
 
-TL;DR
+DVD ISO
 =====
 
     # make dvd
@@ -154,23 +154,23 @@ boot files to be installed as prompted by the build system.
 A cross-build on the operating system sources is executed by
 specifying the target architecture and custom kernel:
 
-    # make base kernel DEVICE=BANANAPI
+    # make base kernel DEVICE=RPI3
 
 In order to speed up building of using an emulated packages build,
 the xtools set can be created like so:
 
-    # make xtools DEVICE=BANANAPI
+    # make xtools DEVICE=RPI3
 
 The xtools set is then used during the packages build similar to
 the distfiles set.
 
-    # make packages DEVICE=BANANAPI
+    # make packages DEVICE=RPI3
 
 The final image is built using:
+    
+    # make arm-<size> DEVICE=RPI3
 
-    # make arm-<size> DEVICE=BANANAPI
-
-Currently available device are: BANANAPI and RPI2.
+Currently available device are: BANANAPI and RPI2, RPI3.
 
 About other scripts and tweaks
 ==============================
