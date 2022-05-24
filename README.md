@@ -30,7 +30,8 @@ Now all the core components should be configured. You can build the device and t
     
 <b> e.g. to build images for RPI3...
     
-    # make xtools base kernel packages arm-3G DEVICE=RPI3    
+    # make xtools base kernel packages arm-3G DEVICE=RPI3
+    # make -j4 xtools base kernel packages arm-3g DEVICE=RPI3 SETTINGS=22.1
 </b>
 
 DVD ISO
