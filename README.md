@@ -9,6 +9,8 @@ http://ftp.freebsd.org/pub/FreeBSD/ports/ports/README.TXT
 
 http://ftp.freebsd.org/pub/FreeBSD/releases/
 
+https://opnsense.c0urier.net/releases/22.1/
+
 Setting up a build system
 =========================
 
