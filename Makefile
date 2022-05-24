@@ -59,7 +59,7 @@ TOOLSBRANCH?=	master
 .if defined(CONFIGDIR)
 SETTINGS=	${CONFIGDIR:C/^.*\///}
 .else
-SETTINGS?=	21.1
+SETTINGS?=	22.1
 .endif
 
 CONFIGDIR?=	${TOOLSDIR}/config/${SETTINGS}
