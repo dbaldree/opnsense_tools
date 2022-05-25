@@ -56,7 +56,7 @@ lint: lint-steps lint-composite
 ROOTDIR?=	/usr
 
 TOOLSDIR?=	${ROOTDIR}/share/tools
-TOOLSBRANCH?=	master
+TOOLSBRANCH?=	22.1.b
 
 .if defined(CONFIGDIR)
 _CONFIGDIR=	${CONFIGDIR}
