@@ -24,14 +24,14 @@ All tasks require a root user.  Do the following to grab the repositories
     # cd /usr/share
     # git clone https://github.com/synergy-promotions/opnsense_tools tools
     # cd tools
-    # make update
+    # make update OS=13.1
     
 Now all the core components should be configured. You can build the device and target architecture images like so:
     
 <b> e.g. to build images for RPI3...
     
-    # make xtools base kernel packages arm-3G DEVICE=RPI3
-    # make -j4 xtools base kernel packages arm-3g DEVICE=RPI3 SETTINGS=22.1
+    # make xtools base kernel packages arm-3G DEVICE=RPI3 OS=13.1
+    # make -j4 xtools base kernel packages arm-3g DEVICE=RPI3 SETTINGS=22.1 OS=13.1
 </b>
 
 DVD ISO
