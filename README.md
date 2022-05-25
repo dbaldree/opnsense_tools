@@ -1,34 +1,40 @@
 About the OPNsense tools
 ========================
+*(This fork's instructions are for building to target the Raspberry Pi 3B and 3B + boards)*
 
 In conjunction with src.git, ports.git, core.git and plugins.git they
 create sets, packages and images for the OPNsense project.
 
+http://ftp.freebsd.org/pub/FreeBSD/ports/ports/README.TXT
+
+http://ftp.freebsd.org/pub/FreeBSD/releases/
+
+https://opnsense.c0urier.net/releases/22.1/
+
 Setting up a build system
 =========================
 
-Install [FreeBSD](https://www.freebsd.org/) 13.0-RELEASE for amd64
-on a machine with at least 25GB of hard disk (UFS works better than ZFS)
-and at least 4GB of RAM to successfully build all standard images.
+(Makefile -- branch and version set to 22.1)
+
+Install on a FreeBSD 13.1 (amd64) virtual machine with at least 30GB of hard disk (UFS works better than ZFS) and at least 4GB of RAM to successfully build all standard images.
 All tasks require a root user.  Do the following to grab the repositories
 (overwriting standard ports and src):
 
-    # pkg install git
-    # cd /usr
-    # git clone https://github.com/opnsense/tools
+    # pkg update && pkg install -y git nano curl subversion aarch64-binutils qemu-user-static u-boot-rpi3 rpi-firmware
+    # cd /usr/share
+    # git clone https://github.com/synergy-promotions/opnsense_tools tools
     # cd tools
     # make update
+    
+Now all the core components should be configured. You can build the device and target architecture images like so:
+    
+<b> e.g. to build images for RPI3...
+    
+    # make xtools base kernel packages arm-3G DEVICE=RPI3
+    # make -j4 xtools base kernel packages arm-3g DEVICE=RPI3 SETTINGS=22.1
+</b>
 
-Note that the OPNsense repositories can also be setup in a non-/usr directory
-by setting ROOTDIR.  For example:
-
-    # mkdir -p /tmp/opnsense
-    # cd /tmp/opnsense
-    # git clone https://github.com/opnsense/tools
-    # cd tools
-    # env ROOTDIR=/tmp/opnsense make update
-
-TL;DR
+DVD ISO
 =====
 
     # make dvd
@@ -66,7 +72,6 @@ Available build options are:
 * ARCH:		the target architecture if not native
 * COMPORT:	serial port, e.g. "0x3f8" (default)
 * COMSPEED:	serial speed, e.g. "115200" (default)
-* DEBUG:	build a debug kernel with additional object information
 * DEVICE:	loads device-specific modifications, e.g. "A10" (default)
 * FLAVOUR:	"OpenSSL" (default), "LibreSSL", "Base"
 * KERNEL:	the kernel config to use, e.g. SMP (default)
@@ -82,12 +87,9 @@ Available build options are:
 How to specify build options via configuration file
 ---------------------------------------------------
 
-The configuration file is required at "CONFIGDIR/build.conf".
+The configuration file is required at "CONFIGDIR/SETTINGS/build.conf".
 Its contents can be modified to adapt a non-standard build environment
-and to avoid excessive Makefile arguments.
-
-A local override exists as "CONFIGDIR/build.conf.local" and is
-parsed first to allow more flexible overrides.  Use with care.
+and to avoid excessive Makefile arguments.  Use with care.
 
 How to run individual or composite build steps
 ----------------------------------------------
@@ -154,7 +156,10 @@ images directory and core package version alignment:
 
 Cross-building for other architecures
 -------------------------------------
+All in one go:
 
+    # make xtools base kernel packages arm-3G DEVICE=RPI3
+ 
 This feature is currently experimental and requires installation
 of packages for cross building / user mode emulation and additional
 boot files to be installed as prompted by the build system.
@@ -162,23 +167,23 @@ boot files to be installed as prompted by the build system.
 A cross-build on the operating system sources is executed by
 specifying the target architecture and custom kernel:
 
-    # make base kernel DEVICE=BANANAPI
+    # make base kernel DEVICE=RPI3
 
 In order to speed up building of using an emulated packages build,
 the xtools set can be created like so:
 
-    # make xtools DEVICE=BANANAPI
+    # make xtools DEVICE=RPI3
 
 The xtools set is then used during the packages build similar to
 the distfiles set.
 
-    # make packages DEVICE=BANANAPI
+    # make packages DEVICE=RPI3
 
 The final image is built using:
+    
+    # make arm-<size> DEVICE=RPI3
 
-    # make arm-<size> DEVICE=BANANAPI
-
-Currently available device are: BANANAPI and RPI2.
+Currently available device are: BANANAPI and RPI2, RPI3.
 
 About other scripts and tweaks
 ==============================
@@ -254,20 +259,14 @@ works:
 Please note that reissuing ports builds will clear plugins and
 core progress.  However, following option apply to PORTSENV:
 
-* BATCH=no	Developer mode with shell after each build failure
 * DEPEND=no	Do not tamper with plugins or core packages
 * PRUNE=no	Do not check ports integrity prior to rebuild
+* SILENT=no	Do not use make(1) -s command line option
 
 The defaults for these ports options are set to "yes".  A sample
 invoke is as follows:
 
-    # make ports-curl PORTSENV="DEPEND=no PRUNE=no"
-
-Both ports and plugins builds allow to override the current list
-derived from their respective configuration files, i.e.:
-
-    # make ports PORTSLIST="security/openssl"
-    # make plugins PLUGINSLIST="devel/debug"
+    # make ports-openssl PORTSENV="DEPEND=no PRUNE=no"
 
 Acquiring precompiled sets from the mirrors or another local direcory
 ---------------------------------------------------------------------
@@ -365,7 +364,7 @@ How the port tree is synced with its upstream repository
 --------------------------------------------------------
 
 The ports tree has a few of our modifications and is sometimes a
-bit ahead of FreeBSD.  In order to keep the local changes, a
+bit ahead of HardenedBSD.  In order to keep the local changes, a
 skimming script is used to review and copy upstream changes:
 
     # make skim[-<option>]
@@ -399,9 +398,8 @@ There's also the posh way to boot a final image using bhyve(8):
 
     # make boot-<image>
 
-Please note that login is only possible via the Nano and Serial images.
-
-Booting VM images will not work for types other than "raw".
+Please note that the system does not have working networking after
+bootup and login is only possible via the Nano and Serial images.
 
 Generating a make.conf for use in running OPNsense
 --------------------------------------------------
