@@ -16,6 +16,8 @@ Setting up a build system
 
 (Makefile -- branch and version set to 22.1)
 
+** Must use PKG version 1.16.3 not the latest branch **
+
 Install on a FreeBSD 13.1 (amd64) virtual machine with at least 30GB of hard disk (UFS works better than ZFS) and at least 4GB of RAM to successfully build all standard images.
 All tasks require a root user.  Do the following to grab the repositories
 (overwriting standard ports and src):
